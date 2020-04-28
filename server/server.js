@@ -15,7 +15,10 @@ app.use(function (req, res, next) {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
+    let url = path.join(publicPath, 'index.html');
+    if (!url.startsWith('/dashboard/')) // since we're on local windows
+        url = url.substring(1);
+    res.sendFile(url);
 });
 
 app.listen(port, () => {
