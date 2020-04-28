@@ -37,7 +37,7 @@ class BlogForm extends Component {
 
     uploadImg = async (file) => {
         let imgURL;
-        await storage.ref(`images/${file.name}`).put(file);
+        await storage.ref(`images/${file.name + '__' + Date.now()}`).put(file);
         await storage.ref('images').child(file.name).getDownloadURL().then(url => {
             imgURL = url;
         })
