@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 
 app.get('*', (req, res) => {
     let url = path.join(publicPath, 'index.html');
-    if (!url.startsWith('/dashboard/')) // since we're on local windows
+    if (!url.startsWith('/')) // since we're on local windows
         url = url.substring(1);
     res.sendFile(url);
 });
