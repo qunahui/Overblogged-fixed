@@ -1,0 +1,25 @@
+.page-header {
+    background: $dark-blue;
+    margin: 0 auto;
+    padding: $l-size 0;
+    color: white;
+    max-width: 40%;
+    border-radius: 30px;
+    .content-container {
+        margin: 0 20px;
+        max-width: 100%;
+    }
+}
+
+.page-header__title {
+    font-size: $xl-size;
+    font-weight: lighter;
+    margin: 0;
+    span {
+        font-weight: 700;
+    }
+}
+
+.page-header__actions {
+    margin-top: $m-size;
+}

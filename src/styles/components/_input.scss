@@ -1,0 +1,25 @@
+.text-input {
+    border: 1px solid #cacccd;
+    height: 50px;
+    padding: $s-size;
+    font-size: $f-large;
+    font-weight: 300;
+}
+
+.select {
+    @extend .text-input; 
+    padding: 10px;
+}
+
+.textarea {
+    @extend .text-input;
+    height: 10rem;
+}
+
+.input--darkpink {
+    background: $dark-blue;
+    color: $pink;
+    border: none;
+    display: inline-block;
+    padding: 5px;
+}

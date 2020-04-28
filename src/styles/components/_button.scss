@@ -1,0 +1,42 @@
+.button{
+    font-size: $f-large;
+    background: $sky-blue;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 300;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    color: $pink;
+    padding: $s-size;
+    margin:10px 10px 0 0;
+}
+
+.button--link {
+    background: none;
+}
+
+.button--secondary {
+    background: $off-white;
+}
+
+.button--darkpink {
+    background: $dark-blue;
+}
+
+.button--greypink {
+    background: $dark-grey;
+
+}
+
+.button-pinkwhite {
+    background: $pink;
+    color: white;
+}
+
+
+.button--black-text {
+    color: black
+}
