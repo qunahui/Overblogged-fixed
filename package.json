@@ -59,6 +59,7 @@
     "webpack": "^4.41.2"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.0.1",
