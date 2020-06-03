@@ -19,6 +19,7 @@ class BlogForm extends Component {
             isUpdating: !!props.isUpdating,
             description: props.blog ? props.blog.description : '',
             editorState,
+            htmlMeta: props.blog ? props.blog.htmlMeta : [],
             htmlContent: props.blog ? props.blog.content : null,
             title: props.blog ? props.blog.title : '',
             thumbnail: props.blog ? props.blog.thumbnail : null,
@@ -76,13 +77,45 @@ class BlogForm extends Component {
                 thumbnail = res;
             });
         }
-        console.log(this.state.thumbnail)
+        this.setMetaState();
         this.props.onSubmit({
             description: this.state.description,
             content: this.state.htmlContent,
+            meta: this.state.htmlMeta,
             title: this.state.title,
             thumbnail: !this.props.isUpdating ? thumbnail : this.state.thumbnail
         })
+    }
+    add = (e) => {
+        e.preventDefault();
+        var new_no = parseInt($('#total_meta').val()) + 1;
+        var new_meta = "<div id='meta_" + new_no + "'  class='input-group'>"
+            + "<label>Name: </label> <input type='text' id='metaName_" + new_no + "' required/> "
+            + "<label>Content: </label> <input type='text' id='metaContent_" + new_no + "'required/>"
+            + "</div>";
+        $('#meta-group').append(new_meta);
+
+        $('#total_meta').val(new_no);
+    }
+    setMetaState = () => {
+        let name_inputs = $("input[id^='metaName_']");
+        let content_inputs = $("input[id^='metaContent_']");
+        let htmlMeta = [...this.state.htmlMeta];
+        for (let i = 0; i < name_inputs.length; i++) {
+            let meta = { name: $(name_inputs[i]).val(), content: $(content_inputs[i]).val() };
+            htmlMeta.push(meta);
+        }
+        this.setState({ htmlMeta });
+        alert('saved');
+    }
+
+    remove = () => {
+        var last_chq_no = $('#total_meta').val();
+
+        if (last_chq_no > 1) {
+            $('#meta_' + last_chq_no).remove();
+            $('#total_meta').val(last_chq_no - 1);
+        }
     }
 
     render() {
@@ -92,17 +125,23 @@ class BlogForm extends Component {
                 <div className="input-group">
                     <label>Add title for your blog: </label>
                     <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
-                    {this.state.title ? <p className="inlineMessage__success">Save!</p> : null}
+                    {this.state.title ? <p className="inlineMessage__success">Saved!</p> : null}
                 </div>
                 <div className="input-group">
                     <label>Add description for your blog: </label>
                     <input type="text" value={this.state.description} onChange={this.handleDescriptionChange} />
-                    {this.state.description ? <p className="inlineMessage__success">Save!</p> : null}
+                    {this.state.description ? <p className="inlineMessage__success">Saved!</p> : null}
                 </div>
                 <div className="input-group">
                     <label>Add your thumbnail for your blog: </label>
                     <input type="file" onChange={this.handleThumbNailChange} />
-                    {this.state.thumbnail ? <p className="inlineMessage__success">Save!</p> : null}
+                    {this.state.thumbnail ? <p className="inlineMessage__success">Saved!</p> : null}
+                </div>
+                <div className="input-group" id="meta-group">
+                    <label>Add meta data for your blog: </label>
+                    <input type="hidden" value="1" id="total_meta"></input>
+                    <button onClick={this.add} className="button button--darkpink button-small">Add</button>
+                    <button onClick={this.remove} className="button button--darkpink button-small">Remove</button>
                 </div>
                 <Editor
                     placeholder="Create your blog here...."

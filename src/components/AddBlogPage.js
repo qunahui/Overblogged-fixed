@@ -6,8 +6,8 @@ import { Redirect } from 'react-router-dom';
 
 export class AddBlogPage extends React.Component {
     onSubmit = (blog) => {
-        this.props.startAddBlog(blog);
         console.log(blog)
+        this.props.startAddBlog(blog);
         this.props.history.push("/");
     }
 

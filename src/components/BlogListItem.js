@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import MetaTags from 'react-meta-tags';
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux'
 import database, { firebase } from '../firebase/firebase'
 
@@ -27,13 +28,20 @@ class BlogListItem extends React.Component {
             <div className="content-container content-container__blog">
                 <Link to="/dashboard/" className="button button--darkpink">Back</Link>
                 {this.state.blogUID === this.props.currentUID ? <Link to={window.location.pathname + /edit/} className="button button--darkpink">Edit</Link> : null}
-                <MetaTags>
+                <Helmet>
                     <meta charSet="utf-8" />
-                    <meta name="keywords" content="Hội Phố, Boardgame, trò chơi người việt, đồ chơi thẻ bài" />
-                    <meta name="description" content="Hội phố - trò chơi boardgame mới của người Việt" />
-                    <meta name="google-site-verification" content="JR0NGrFwpYB4Qg7fIi94fLY8UKNwR7_Q9bRm9Uo5IsE" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:locale" content="vi_VN" />
+                    <meta httpEquiv="audience" content="General" />
+                    <meta httpEquiv="x-dns-prefetch-control" content="on"></meta>
+                    {
+                        blogState.meta ?
+                            blogState.meta.map((metaInfo, index) => {
+                                return <meta key={index} name={metaInfo.name} content={metaInfo.content} />;
+                            }) : null
+                    }
                     <title>{blogState.title}</title>
-                </MetaTags>
+                </Helmet>
                 <div className="content-container__blog">
                     {ReactHtmlParser(blogState.content)}
                 </div>
