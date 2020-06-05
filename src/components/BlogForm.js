@@ -19,7 +19,7 @@ class BlogForm extends Component {
             isUpdating: !!props.isUpdating,
             description: props.blog ? props.blog.description : '',
             editorState,
-            htmlMeta: props.blog ? props.blog.htmlMeta : [],
+            htmlMeta: props.blog ? props.blog.meta : [],
             htmlContent: props.blog ? props.blog.content : null,
             title: props.blog ? props.blog.title : '',
             thumbnail: props.blog ? props.blog.thumbnail : null,
