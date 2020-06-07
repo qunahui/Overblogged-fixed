@@ -5,6 +5,9 @@ import { startAddBlog } from '../actions/blogs'
 import { Redirect } from 'react-router-dom';
 
 export class AddBlogPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     onSubmit = (blog) => {
         console.log(blog)
         this.props.startAddBlog(blog);
