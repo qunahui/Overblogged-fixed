@@ -3,6 +3,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 process.env.NODE_ENV = process.env.NODE_ENV = 'development';
 
@@ -24,7 +25,7 @@ module.exports = (env) => {
             path: path.join(__dirname, 'public', 'dist'),
             filename: 'bundle.js',
             publicPath: 'dist/',
-            chunkFilename: '[name].[chunkhash].js'
+            chunkFilename: '[name].bundle.js'
         },
         module: {
             rules: [{
@@ -59,7 +60,8 @@ module.exports = (env) => {
             new CopyWebpackPlugin([
                 { from: './public/index.html', to: './' }
             ]),
-            new CompressionPlugin()
+            new CompressionPlugin(),
+            new BundleAnalyzerPlugin()
         ],
         devtool: false,
         devServer: {

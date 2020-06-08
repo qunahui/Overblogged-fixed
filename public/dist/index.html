@@ -8,7 +8,14 @@
     <meta name="google-site-verification" content="googlec6ed212b13e63e44.html" />
     <meta name="google-site-verification" content="mInMJKZBomAeEMNdE3yo-puzP-rmlYyE4n4o6lO3w7U" />
     <meta name="google-site-verification" content="NtcEAnBlEAA6MZd8U4cG98DfXGfKE3dnMPExsj7EkAg" />
+    <meta charSet="utf-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta httpEquiv="audience" content="General" />
+    <meta httpEquiv="x-dns-prefetch-control" content="on">
+    </meta>
     <title>Overblogged</title>
+    <base href="/">
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/dist/styles.css" />
     <meta name="google-site-verification" content="66QtYYbMPRSQhRMCof1vHrvIhLuXB4XiqAB8xVg5IAs" />
@@ -19,24 +26,47 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <div id="app">
     </div>
-    <!-- Google Stuffs -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168576154-1" defer></script>
-    <script async defer>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-168576154-1');
-    </script>
-    <script async defer>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W8LXZP4');</script>
-    <!-- End Google Stuffs -->
-    <script type="module" src="/dist/bundle.js" defer></script>
 </body>
+<!-- <script defer type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
+<script type="text/javascript">
+    const firebaseConfig = {
+        apiKey: "AIzaSyBoXzUYoFf6QRk8aLPlJzZcWjct1PZTJeo",
+        authDomain: "blog-6e2e4.firebaseapp.com",
+        databaseURL: "https://blog-6e2e4.firebaseio.com",
+        projectId: "blog-6e2e4",
+        storageBucket: "blog-6e2e4.appspot.com",
+        messagingSenderId: "268737839704",
+        appId: "1:268737839704:web:6934b8aaac08c07a6d002d"
+    };
+    firebase.initializeApp(firebaseConfig);
+</script>
+<script defer type="module" src="/dist/bundle.js"></script>
+<!-- Google Stuffs -->
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-168576154-1" defer></script>
+<script defer>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-168576154-1');
+</script>
+<script defer>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W8LXZP4');</script>
+<!-- End Google Stuffs -->
 
 </html>
+
+<!-- "firebase": "^7.15.0" -->
