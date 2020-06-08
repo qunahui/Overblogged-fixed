@@ -1,0 +1,17 @@
+{
+    "short_name": "Overblogged",
+    "name": "Overblogged ?",
+    "description": "Boardgame tricks and tips",
+    "icons": [
+        {
+            "src": "/images/favicon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/dashboard/",
+    "background_color": "#282c35",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#282c35"
+}
