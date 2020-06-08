@@ -27,7 +27,7 @@ const BlogList = (props) => {
                                     <span className="list-item__title">{blog.title}</span>
                                     <div className="list-item__data">
                                         <span>{blog.description}</span>
-                                        <img src={blog.thumbnail} style={{ height: '100px', width: '100px' }} />
+                                        <img src={blog.thumbnail} style={{ height: '100px', width: '100px' }} alt="thumbnail" />
                                     </div>
                                 </Link>
                             })
