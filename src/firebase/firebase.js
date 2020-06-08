@@ -1,8 +1,6 @@
 const firebase = require('firebase/app');
-require('firebase/firebase-database');
-require('firebase/firebase-auth');
-require('firebase/firebase-storage');
-
+require('firebase/auth');
+require('firebase/database');
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
