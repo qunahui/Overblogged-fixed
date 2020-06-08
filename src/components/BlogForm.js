@@ -159,9 +159,9 @@ class BlogForm extends Component {
                     toolbarStyle={{
                         color: 'black',
                         position: 'fixed',
-                        left: '10vw',
-                        top: '30vh',
-                        width: '20%'
+                        left: '0vw',
+                        top: '40vh',
+                        width: '27.5%'
                     }}
                 />
                 <button className="button button-pinkwhite">Save blog</button>
