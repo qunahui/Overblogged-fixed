@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
@@ -12,20 +12,22 @@ import LoadingPage from './components/LoadingPage'
 const store = configureStore();
 
 const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
+    <Suspense fallback={<LoadingPage />}>
+        <Provider store={store}>
+            <AppRouter />
+        </Provider>
+    </Suspense>
 )
 
-let hasRendered = false;
-const renderApp = () => {
-    if (!hasRendered) {
-        ReactDOM.render(jsx, document.getElementById('app'));
-        hasRendered = true;
-    }
-}
+// let hasRendered = false;
+// const renderApp = () => {
+//     if (!hasRendered) {
+//         ReactDOM.render(jsx, document.getElementById('app'));
+//         hasRendered = true;
+//     }
+// }
 
-ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+ReactDOM.render(jsx, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {

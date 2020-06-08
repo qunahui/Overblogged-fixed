@@ -2,9 +2,7 @@ import React from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import DashboardPage from '../components/DashboardPage';
-import LoginPage from '../components/LoginPage'
 import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute'
 import BlogListItem from '../components/BlogListItem';
 import AddBlogPage from '../components/AddBlogPage';
 import NotFoundPage from '../components/NotFoundPage';
