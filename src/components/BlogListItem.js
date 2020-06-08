@@ -28,11 +28,6 @@ class BlogListItem extends React.Component {
                 <Link to="/dashboard/" className="button button--darkpink">Back</Link>
                 {this.state.blogUID === this.props.currentUID ? <Link to={window.location.pathname + /edit/} className="button button--darkpink">Edit</Link> : null}
                 <Helmet>
-                    <meta charSet="utf-8" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:locale" content="vi_VN" />
-                    <meta httpEquiv="audience" content="General" />
-                    <meta httpEquiv="x-dns-prefetch-control" content="on"></meta>
                     {
                         blogState.meta ?
                             blogState.meta.map((metaInfo, index) => {
