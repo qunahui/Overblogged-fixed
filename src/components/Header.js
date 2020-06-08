@@ -9,7 +9,7 @@ export const Header = ({ startLogout, startLogin, isAuthenticated }) => {
             <div className="content-container">
                 <div className="header-content">
                     <Link to="/dashboard" className="header__title">
-                        <h1>Overblogged</h1>
+                        <h1>Overblogged</h1> 
                     </Link>
                     {
                         isAuthenticated ?

@@ -34,8 +34,7 @@ class EditBlogPage extends Component {
                         <h1 className="page-header__title">Edit Blog</h1>
                     </div>
                 </div>
-                <div className="content-container"
-                >
+                <div className="content-container">
                     <Suspense fallback={<div></div>}>
                         <BlogForm
                             blog={this.props.blog}
