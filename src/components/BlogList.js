@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import LoadingPage from './LoadingPage';
 
 const BlogList = (props) => {
     return (
@@ -8,9 +9,7 @@ const BlogList = (props) => {
             <div className="">
                 {
                     props.blogs.length === 0 ? (
-                        <div>
-                            <span className="">No Blog</span>
-                        </div>
+                        <LoadingPage />
                     ) : (
                             props.blogs.map((blog) => {
                                 return <Link
