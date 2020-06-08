@@ -2,7 +2,6 @@ const path = require('path');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV = 'development';
@@ -58,8 +57,7 @@ module.exports = (env) => {
             new CopyWebpackPlugin([
                 { from: './public/index.html', to: './' }
             ]),
-            new CompressionPlugin(),
-            new BundleAnalyzerPlugin(),
+            new CompressionPlugin()
         ],
         devtool: false,
         devServer: {

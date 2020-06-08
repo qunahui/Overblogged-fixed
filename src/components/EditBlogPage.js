@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import { connect } from 'react-redux'
-import BlogForm from './BlogForm'
+const BlogForm = React.lazy(() => import("./BlogForm"));
 import { startRemoveMyBlog, startEditMyBlog } from '../actions/blogs'
 import { Redirect } from 'react-router-dom'
 
@@ -36,12 +36,14 @@ class EditBlogPage extends Component {
                 </div>
                 <div className="content-container"
                 >
-                    <BlogForm
-                        blog={this.props.blog}
-                        onSubmit={this.onSubmit}
-                        isUpdating={true}
-                        className="content-container__blog"
-                    />
+                    <Suspense fallback={<div></div>}>
+                        <BlogForm
+                            blog={this.props.blog}
+                            onSubmit={this.onSubmit}
+                            isUpdating={true}
+                            className="content-container__blog"
+                        />
+                    </Suspense>
                     <button
                         className="button button--darkpink"
                         onClick={this.onClick}>

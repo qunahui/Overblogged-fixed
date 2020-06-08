@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
-import BlogForm from './BlogForm';
+const BlogForm = React.lazy(() => import("./BlogForm"));
 import { startAddBlog } from '../actions/blogs'
 import { Redirect } from 'react-router-dom';
 
@@ -24,10 +24,12 @@ export class AddBlogPage extends React.Component {
                     </div>
                 </div>
                 <div className="content-container">
-                    <BlogForm
-                        onSubmit={this.onSubmit}
-                        isUpdating={false}
-                    />
+                    <Suspense fallback={<div></div>}>
+                        <BlogForm
+                            onSubmit={this.onSubmit}
+                            isUpdating={false}
+                        />
+                    </Suspense>
                 </div>
             </div>
         ) : <Redirect to="/dashboard" />

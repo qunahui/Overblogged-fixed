@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import LoadingPage from './LoadingPage';
+const LoadingPage = React.lazy(() => import('./LoadingPage'));
 
 const BlogList = (props) => {
     return (
@@ -9,7 +9,9 @@ const BlogList = (props) => {
             <div className="">
                 {
                     props.blogs.length === 0 ? (
-                        <LoadingPage />
+                        <Suspense fallback={<div></div>}>
+                            <LoadingPage />
+                        </Suspense>
                     ) : (
                             props.blogs.map((blog) => {
                                 return <Link
