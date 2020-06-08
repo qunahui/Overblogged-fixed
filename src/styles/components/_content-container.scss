@@ -1,9 +1,11 @@
 .content-container {
-    margin: 0 auto;
-    padding: 0 $m-size;
-    max-width: 40%;
+    margin: 5px auto;
+    padding: $l-size 0;
+    max-width: 45%;
     color: white;
+    word-wrap: break-word;
 }
+
 .content-container__blog{ 
     img {
         max-width: 100%;
@@ -11,4 +13,11 @@
         min-width: auto;
         min-height: auto;
     }
+}
+
+.content-container__header {
+    margin: 0 auto;
+    padding: $s-size 0;
+    max-width: 45%;
+    color: white;
 }

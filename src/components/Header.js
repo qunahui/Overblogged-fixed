@@ -6,7 +6,7 @@ import { startLogout, startLogin } from '../actions/auth'
 export const Header = ({ startLogout, startLogin, isAuthenticated }) => {
     return (
         <header className="header">
-            <div className="content-container">
+            <div className="content-container content-container__header">
                 <div className="header-content">
                     <Link to="/dashboard" className="header__title">
                         <h1>Overblogged</h1>

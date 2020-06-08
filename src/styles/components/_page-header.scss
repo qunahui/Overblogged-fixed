@@ -1,9 +1,11 @@
 .page-header {
     background: $dark-blue;
     margin: 0 auto;
-    padding: $l-size 0;
+    padding: 0 30px;
+    padding-top: $m-size;
     color: white;
-    max-width: 40%;
+    max-width: 45%;
+    height: 200px;
     border-radius: 30px;
     .content-container {
         margin: 0 20px;
@@ -18,6 +20,7 @@
     span {
         font-weight: 700;
     }
+    transform: translateY(-20px);
 }
 
 .page-header__actions {
