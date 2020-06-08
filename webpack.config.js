@@ -61,7 +61,7 @@ module.exports = (env) => {
             ]),
             new CompressionPlugin()
         ],
-        devtool: "inline-source-map",
+        devtool: false,
         devServer: {
             contentBase: path.join(__dirname, 'public'),
             historyApiFallback: true,
