@@ -4,10 +4,12 @@ import ReactHtmlParser from 'react-html-parser';
 import { Helmet } from "react-helmet";
 import { connect } from 'react-redux'
 import database from '../firebase/firebase'
+import LoadingPage from './LoadingPage';
 
 class BlogListItem extends React.Component {
     constructor(props) {
         super(props);
+        // window.location.href.substr(window.location.href.lastIndexOf("/") + 1, window.location.href.length)
         this.state = {
             blogState: this.props.location.state ? this.props.location.state : this.props.blog,
             isSameAuthor: false,
@@ -16,10 +18,18 @@ class BlogListItem extends React.Component {
     }
 
     componentDidMount() {
-        database.ref(`author-blog/${this.state.blogState.id}`).once('value').then(snapshot => {
+        const ID = window.location.href.substr(window.location.href.lastIndexOf("/") + 1, window.location.href.length)
+        database.ref(`author-blog/${ID}`).once('value').then(snapshot => {
             this.setState({ blogUID: snapshot.val() })
         })
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.blog != prevProps.blog) {
+            this.setState({ blogState: this.props.blog })
+        }
+    }
+
 
     render() {
         const { blogState } = this.state;
@@ -27,18 +37,24 @@ class BlogListItem extends React.Component {
             <div className="content-container content-container__blog">
                 <Link to="/dashboard/" className="button button--darkpink">Back</Link>
                 {this.state.blogUID === this.props.currentUID ? <Link to={window.location.pathname + /edit/} className="button button--darkpink">Edit</Link> : null}
-                <Helmet>
-                    {
-                        blogState.meta ?
-                            blogState.meta.map((metaInfo, index) => {
-                                return <meta key={index} name={metaInfo.name} content={metaInfo.content} />;
-                            }) : null
-                    }
-                    <title>{blogState.title}</title>
-                </Helmet>
-                <div className="content-container__blog">
-                    {ReactHtmlParser(blogState.content)}
-                </div>
+                {
+                    this.state.blogState ? (
+                        <div>
+                            <Helmet>
+                                {
+                                    blogState.meta.length > 0 ?
+                                        blogState.meta.map((metaInfo, index) => {
+                                            return <meta key={index} name={metaInfo.name} content={metaInfo.content} />;
+                                        }) : null
+                                }
+                                <title>{blogState.title}</title>
+                            </Helmet>
+                            <div className="content-container__blog">
+                                {ReactHtmlParser(blogState.content)}
+                            </div>
+                        </div>
+                    ) : <LoadingPage />
+                }
             </div>
         )
     }

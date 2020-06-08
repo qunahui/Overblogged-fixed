@@ -27,7 +27,28 @@
     <div id="app">
     </div>
 </body>
-<script defer type="text/javascript" id="" src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<!-- <script defer type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
+<script type="text/javascript">
+    const firebaseConfig = {
+        apiKey: "AIzaSyBoXzUYoFf6QRk8aLPlJzZcWjct1PZTJeo",
+        authDomain: "blog-6e2e4.firebaseapp.com",
+        databaseURL: "https://blog-6e2e4.firebaseio.com",
+        projectId: "blog-6e2e4",
+        storageBucket: "blog-6e2e4.appspot.com",
+        messagingSenderId: "268737839704",
+        appId: "1:268737839704:web:6934b8aaac08c07a6d002d"
+    };
+    firebase.initializeApp(firebaseConfig);
+</script>
 <script defer type="module" src="/dist/bundle.js"></script>
 <!-- Google Stuffs -->
 <script src="https://www.googletagmanager.com/gtag/js?id=UA-168576154-1" defer></script>
