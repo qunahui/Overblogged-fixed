@@ -56,8 +56,7 @@ module.exports = (env) => {
             }),
             new CopyWebpackPlugin([
                 { from: './public/index.html', to: './' }
-            ]),
-            new BundleAnalyzerPlugin()
+            ])
         ],
         devtool: isProduction ? "source-map" : "inline-source-map",
         devServer: {
