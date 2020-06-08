@@ -6,27 +6,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const DashBoardPage = (props) => {
-    console.log(props.isAuthenticated)
-    // return props.isAuthenticated ? (
-    //     <div style={{ textAlign: 'center' }}>
-    //         <div className="page-header">
-    //             <div className="content-container">
-    //                 <h1 className="page-header__title">Add expense</h1>
-    //             </div>
-    //         </div>
-    //         <Link to="/create">Create</Link>
-    //         <Link to="/myblog">My blog</Link>
-    //         <BlogList />
-    //     </div>
-    // ) : <div style={{ textAlign: 'center' }}>
-    //         <div className="page-header">
-    //             <div className="content-container">
-    //                 <h1 className="page-header__title">Add expense</h1>
-    //             </div>
-    //         </div>
-    //         <BlogList />
-    //     </div>
-
     return (
         <div>
             <div className="page-header">
@@ -37,7 +16,6 @@ const DashBoardPage = (props) => {
                             <Link to="/myblog" className="button button--greypink">My blog</Link>
                         </span>
                         : null}
-
                 </div>
             </div>
             <BlogList />
