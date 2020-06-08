@@ -61,7 +61,6 @@ module.exports = (env) => {
                 { from: './public/index.html', to: './' }
             ]),
             new CompressionPlugin(),
-            new BundleAnalyzerPlugin()
         ],
         devtool: false,
         devServer: {
