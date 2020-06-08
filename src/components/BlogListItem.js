@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
-import MetaTags from 'react-meta-tags';
 import { Helmet } from "react-helmet";
 import { connect } from 'react-redux'
-import database, { firebase } from '../firebase/firebase'
+import database from '../firebase/firebase'
 
 class BlogListItem extends React.Component {
     constructor(props) {

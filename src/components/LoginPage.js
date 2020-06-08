@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { startLogin } from '../actions/auth'
-import { firebase } from '../firebase/firebase'
 
 export const LoginPage = ({ startLogin }) => (
     <div className="box-layout">

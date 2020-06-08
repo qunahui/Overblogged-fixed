@@ -1,8 +1,6 @@
 import React from 'react'
 import BlogList from './BlogList'
 import { Link } from 'react-router-dom'
-import MyBlogList from './MyBlogList'
-import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const DashBoardPage = (props) => {
