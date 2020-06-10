@@ -9,11 +9,13 @@ import LoadingPage from './LoadingPage';
 class BlogListItem extends React.Component {
     constructor(props) {
         super(props);
-        // window.location.href.substr(window.location.href.lastIndexOf("/") + 1, window.location.href.length)
+        const URL = window.location.href;
+        const ID = URL.substr(URL.split("/", 4).join("/").length + 1, 20);
         this.state = {
             blogState: this.props.location.state ? this.props.location.state : this.props.blog,
             isSameAuthor: false,
             blogUID: '',
+            ID
         }
     }
 
@@ -22,10 +24,7 @@ class BlogListItem extends React.Component {
     }
 
     componentDidMount() {
-        const URL = window.location.href;
-        const ID = URL.substr(URL.split("/", 4).join("/").length + 1, 20);
-        console.log("ID: ", ID);
-        database.ref(`author-blog/${ID}`).once('value').then(snapshot => {
+        database.ref(`author-blog/${this.state.ID}`).once('value').then(snapshot => {
             this.setState({ blogUID: snapshot.val() })
         })
     }
@@ -33,20 +32,24 @@ class BlogListItem extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.blog != prevProps.blog) {
             this.setState({ blogState: this.props.blog })
+            if (window.location.pathname.lastIndexOf("/") !== window.location.pathname.length - 1) {
+                window.history.pushState(null, null, window.location.pathname + "/");
+            }
+            console.log(window.location.pathname.split("/").length);
+            if (window.location.pathname.split("/").length === 4) {
+                window.history.pushState(null, null, window.location.pathname + this.props.blog.title.split(" ").join("-") + "/");
+            }
         }
-        console.log("Blog user ID:", this.state.blogUID);
-        console.log("Current user ID:", this.props.currentUID);
     }
 
 
     render() {
-        const { blogState } = this.state;
-        console.log(window.location.href.substr(0, window.location.href.lastIndexOf("/")) + /edit/);
+        const { blogState, ID } = this.state;
         return (
             <div className="content-container content-container__blog">
                 <Link to="/dashboard/" className="button button--darkpink">Back</Link>
                 {
-                    this.props.currentUID ? <Link to={"/blog/" + blogState.id + "/edit/"} className="button button--darkpink">Edit</Link> : null}
+                    this.props.currentUID ? <Link to={"/blog/" + ID + "/edit/"} className="button button--darkpink">Edit</Link> : null}
                 {
                     this.state.blogState ? (
                         <div>
