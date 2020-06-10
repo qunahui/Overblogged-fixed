@@ -17,8 +17,14 @@ class BlogListItem extends React.Component {
         }
     }
 
+    getPosition = (string, subString, index) => {
+        return string.split(subString, index).join(subString).length;
+    }
+
     componentDidMount() {
-        const ID = window.location.href.substr(window.location.href.lastIndexOf("/") + 1, window.location.href.length)
+        const URL = window.location.href;
+        const ID = URL.substr(URL.split("/", 4).join("/").length + 1, 20);
+        console.log("ID: ", ID);
         database.ref(`author-blog/${ID}`).once('value').then(snapshot => {
             this.setState({ blogUID: snapshot.val() })
         })
@@ -28,21 +34,25 @@ class BlogListItem extends React.Component {
         if (this.props.blog != prevProps.blog) {
             this.setState({ blogState: this.props.blog })
         }
+        console.log("Blog user ID:", this.state.blogUID);
+        console.log("Current user ID:", this.props.currentUID);
     }
 
 
     render() {
         const { blogState } = this.state;
+        console.log(window.location.href.substr(0, window.location.href.lastIndexOf("/")) + /edit/);
         return (
             <div className="content-container content-container__blog">
                 <Link to="/dashboard/" className="button button--darkpink">Back</Link>
-                {this.state.blogUID === this.props.currentUID ? <Link to={window.location.pathname + /edit/} className="button button--darkpink">Edit</Link> : null}
+                {
+                    this.props.currentUID ? <Link to={"/blog/" + blogState.id + "/edit/"} className="button button--darkpink">Edit</Link> : null}
                 {
                     this.state.blogState ? (
                         <div>
                             <Helmet>
                                 {
-                                    blogState.meta.length > 0 ?
+                                    blogState.meta != undefined ?
                                         blogState.meta.map((metaInfo, index) => {
                                             return <meta key={index} name={metaInfo.name} content={metaInfo.content} />;
                                         }) : null

@@ -27,7 +27,7 @@ export const MyBlogList = (props) => {
                                     return <Link
                                         className="list-item"
                                         to={{
-                                            pathname: '/blog/' + blog.id,
+                                            pathname: '/blog/' + blog.id + '/' + blog.title.split(" ").join("-"),
                                             state: {
                                                 id: blog.id,
                                                 content: blog.content

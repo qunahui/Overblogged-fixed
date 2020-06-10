@@ -55,7 +55,7 @@ class BlogForm extends Component {
     }
 
     handleTitleChange = (e) => {
-        this.setState({ title: e.target.value })
+        this.setState({ title: e.target.value.trim() })
 
     }
 
@@ -157,7 +157,8 @@ class BlogForm extends Component {
                             alt: {
                                 present: true,
                                 mandatory: true
-                            }
+                            },
+                            alignmentEnabled: true
                         }
                     }}
                     toolbarStyle={{
@@ -165,7 +166,8 @@ class BlogForm extends Component {
                         position: 'fixed',
                         left: '0vw',
                         top: '40vh',
-                        width: '27.5%'
+                        width: '15%',
+                        height: 'auto'
                     }}
                 />
                 <button className="button button-pinkwhite">Save blog</button>
