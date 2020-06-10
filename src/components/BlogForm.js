@@ -154,6 +154,10 @@ class BlogForm extends Component {
                             previewImage: true,
                             uploadEnabled: true,
                             uploadCallback: this.uploadCallback,
+                            alt: {
+                                present: true,
+                                mandatory: true
+                            }
                         }
                     }}
                     toolbarStyle={{
